@@ -31,6 +31,10 @@ public class MyHashTable<K, V> {
         chainArray = new HashNode[M];
         size = 0;
     }
+    private int hash(K key) {
+        int hashCode = key.hashCode();
+        return Math.abs(hashCode) % M;
+    }
 
 }
 

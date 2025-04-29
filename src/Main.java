@@ -2,15 +2,16 @@ package src;
 
 public class Main {
     public static void main(String[] args) {
-        MyHashTable<MyTestingClass, String> table = new MyHashTable<>();
+        MyHashTable<MyTestingClass, Student> table = new MyHashTable<>();
 
         for (int i = 0; i < 10000; i++) {
-            table.put(new MyTestingClass(i), "Value" + i);
+            Student student = new Student("Student" + i, 18 + (i % 5));
+            table.put(new MyTestingClass(i), student);
         }
 
         for (int i = 0; i < 11; i++) {
             int count = 0;
-            MyHashTable<MyTestingClass, String>.HashNode<MyTestingClass, String> head = table.chainArray[i];
+            MyHashTable<MyTestingClass, Student>.HashNode<MyTestingClass, Student> head = table.chainArray[i];
             while (head != null) {
                 count++;
                 head = head.next;
